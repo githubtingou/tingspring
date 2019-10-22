@@ -21,8 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import static com.ting.tingspring.spring.NrcThreadLocal.requestNo;
-import static com.ting.tingspring.spring.NrcThreadLocal.startTime;
+import static com.ting.tingspring.spring.AopThreadLocal.requestNo;
+import static com.ting.tingspring.spring.AopThreadLocal.startTime;
 
 /**
  * 切面
@@ -77,7 +77,7 @@ public class AspectTest {
     public void doAfterReturning(Object responseVo) {
         log.info("requestNo : " + requestNo.get() + " responseVo : " + JSON.toJSON(responseVo));
         log.info("requestNo : " + requestNo.get() + " cost(ms) : " + (System.currentTimeMillis() - startTime.get()));
-        NrcThreadLocal.clearAll();
+        AopThreadLocal.clearAll();
     }
 
 }

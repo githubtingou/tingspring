@@ -8,7 +8,7 @@ package com.ting.tingspring.spring;
  * @create 2018/6/1
  * @since 1.0.0
  */
-public class NrcThreadLocal {
+public class AopThreadLocal {
     public static ThreadLocal<Long> startTime = new ThreadLocal<Long>();
     public static ThreadLocal<String> requestNo = new ThreadLocal<String>();
 
