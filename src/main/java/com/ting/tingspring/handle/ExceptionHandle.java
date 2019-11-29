@@ -73,7 +73,7 @@ public class ExceptionHandle {
             return ResponseDtoUtils.buildResponseCodeValid(sb.toString());
 
         }
-
+        log.error("错误信息，", e);
         return ResponseDtoUtils.buildResponseDtoError(ResponseCode.REQ_FAIL, e.getMessage());
 
     }

@@ -41,7 +41,7 @@ public class AspectTest {
     }
 
     @Before("tingAop()")
-    public void doBefore(JoinPoint joinPoint) throws Throwable {
+    public void doBefore(JoinPoint joinPoint) {
         startTime.set(System.currentTimeMillis());
         String seqNo = UUID.randomUUID().toString();
         // 接收到请求，记录请求内容

@@ -22,7 +22,7 @@ public class UserDto {
     private Long id;
     @Max(value = 3, message = "名称长度不能超过3")
     private String name;
-    private Integer age;
+    private Integer age = 16;
     @Email(message = "不符合邮箱格式")
     private String email;
 
