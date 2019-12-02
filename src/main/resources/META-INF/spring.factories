@@ -1,2 +1,2 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.ting.tingspring.interceptor.MybatisConfiguration
+#org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+#  com.ting.tingspring.interceptor.MybatisConfiguration

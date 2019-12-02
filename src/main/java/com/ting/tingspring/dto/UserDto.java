@@ -1,8 +1,6 @@
 package com.ting.tingspring.dto;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.Email;
@@ -18,6 +16,8 @@ import javax.validation.constraints.Max;
 @Setter
 @ToString
 @Validated
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserDto {
     private Long id;
     @Max(value = 3, message = "名称长度不能超过3")

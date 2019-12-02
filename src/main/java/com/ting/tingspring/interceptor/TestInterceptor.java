@@ -18,7 +18,7 @@ import org.springframework.util.StringUtils;
 import java.util.Properties;
 
 /**
- * 测试
+ * 实现自定义的sql
  *
  * @author LISHUANG
  * @date 2019/11/28
@@ -58,6 +58,7 @@ public class TestInterceptor implements Interceptor {
     private void queryInvocation(Invocation invocation) {
         log.info("进入自定义query拦截器");
 
+        // 获取MappedStatement
         MappedStatement arg = (MappedStatement) invocation.getArgs()[0];
 
         // 获取sql
@@ -69,7 +70,7 @@ public class TestInterceptor implements Interceptor {
             return;
         }
 
-        // 创建一个新的MappedStatement
+        // 创建一个新的 MappedStatement
         MappedStatement newMappedStatement = this.copyFromMappedStatement(arg, new BoundSqlSqlSource(boundSql));
 
         MetaObject metaObject = MetaObject.forObject(newMappedStatement,
