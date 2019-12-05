@@ -11,7 +11,7 @@ import java.util.List;
  * @author LISHUANG
  * @date 2019/11/28
  */
-@Service("userServicev2")
+@Service
 public class UserService {
 
     @Autowired

@@ -1,5 +1,7 @@
 package com.ting.tingspring.utils;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.ting.tingspring.dto.UserDto;
@@ -51,6 +53,7 @@ public class TestMain implements Test2, Test1, Test3 {
         //json = gson2.fromJson(json, UserDto.class);
 
         System.out.println(json);
+        JSON.toJSONString(userDto, SerializerFeature.WriteMapNullValue);
 //
 
 

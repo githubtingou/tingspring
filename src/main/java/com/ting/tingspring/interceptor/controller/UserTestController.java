@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
  * @author LISHUANG
  * @date 2019/11/28
  */
-@RestController("userControllerv2")
+@RestController
 @RequestMapping(value = "/test")
-public class UserController {
+public class UserTestController {
     @Autowired
     UserService userService;
 
