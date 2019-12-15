@@ -1,13 +1,11 @@
 package com.ting.tingspring.spring.ConditionalLearn;
 
 import com.ting.tingspring.dto.UserDto;
-import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 
 /**
  * 测试@Conditional注解
@@ -49,15 +47,13 @@ public class ConditionalBean {
      * @return
      */
     @Bean(name = "赵四")
-    @ConditionalOnMissingBean(UserDto.class)
-    @Order(1000)
+    @ConditionalOnMissingBean(name = "赵四1")
     public UserDto zhaoSi() {
         return new UserDto(7L, "赵四", 70, "789@qq.com");
     }
 
     @Bean(name = "赵四1")
-    @Order(1001)
-    @ConditionalOnMissingClass(value = {"com.ting.tingspring.dto.UserDto"})
+    @ConditionalOnMissingClass(value = {"com.ting.tingspring.spring.ConditionalLearn.ConditionalBeanBefore"})
     public UserDto zhaoSi1() {
         return new UserDto(7L, "赵四1", 70, "789@qq.com");
     }

@@ -4,6 +4,7 @@ import org.springframework.core.annotation.AliasFor;
 
 import java.lang.annotation.*;
 
+
 /**
  * 自定义注解
  *
@@ -17,6 +18,7 @@ import java.lang.annotation.*;
 // 是否被生成doc
 @Documented
 public @interface AnnotationTest {
+    //AliasFor 要使用AnnotationUtils才会有效果
     @AliasFor("name")
     String value() default "";
 

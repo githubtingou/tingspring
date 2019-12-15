@@ -89,13 +89,97 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
     </dependencies>
 
+
+    <profiles>
+        <profile>
+            <!-- 开发环境 -->
+            <id>dev</id>
+            <properties>
+                <packageEnvironment>dev</packageEnvironment>
+            </properties>
+            <!-- 默认激活dev环境配置 -->
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <!--<profile>-->
+        <!--&lt;!&ndash; 测试环境 &ndash;&gt;-->
+        <!--<id>test</id>-->
+        <!--<properties>-->
+        <!--<packageEnvironment>test</packageEnvironment>-->
+        <!--</properties>-->
+        <!--</profile>-->
+        <!--<profile>-->
+        <!--&lt;!&ndash; 生产环境 &ndash;&gt;-->
+        <!--<id>prd</id>-->
+        <!--<properties>-->
+        <!--<packageEnvironment>prd</packageEnvironment>-->
+        <!--</properties>-->
+        <!--</profile>-->
+        <!--<profile>-->
+        <!--&lt;!&ndash; demo环境 &ndash;&gt;-->
+        <!--<id>demo</id>-->
+        <!--<properties>-->
+        <!--<packageEnvironment>demo</packageEnvironment>-->
+        <!--</properties>-->
+        <!--</profile>-->
+
+    </profiles>
+
+
     <build>
+        <!--打包设置-->
+        <!-- 打包资源 依次序执行 -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <!-- 在SpringBoot项目中替换@xxx@内容 -->
+                <!-- 在SpringMvc项目中替换${xxx}内容 -->
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>dev/</exclude>
+                    <!--<exclude>test/</exclude>-->
+                    <!--<exclude>prd/</exclude>-->
+                    <!--<exclude>demo/</exclude>-->
+                    <exclude>application.properties</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>application.properties</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources/${packageEnvironment}/</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**</include>
+                </includes>
+            </resource>
+        </resources>
+
         <plugins>
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>

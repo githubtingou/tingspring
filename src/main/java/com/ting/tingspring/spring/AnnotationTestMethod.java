@@ -9,7 +9,7 @@ package com.ting.tingspring.spring;
 public class AnnotationTestMethod {
 
 
-    @AnnotationTest(value = "李四")
+    @AnnotationTest(value = "李四", age = 10)
     public void annotationRun() {
         System.out.println("自定义注解");
     }
