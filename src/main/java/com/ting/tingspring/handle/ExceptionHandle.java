@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletResponseWrapper;
 import java.util.List;
 
 /**
@@ -36,7 +38,7 @@ public class ExceptionHandle {
      */
     @ExceptionHandler(value = Throwable.class)
     @ResponseBody
-    public ResponseDto exceptionHandel(HttpServletRequest request, Exception e) {
+    public ResponseDto exceptionHandel(HttpServletRequest request,HttpServletResponse response, Exception e) {
 
         /**
          * 自定义异常处理
@@ -45,7 +47,6 @@ public class ExceptionHandle {
             MyException myException = (MyException) e;
             return ResponseDtoUtils.buildResponseDtoError(myException.getResponseCode(), myException.getShowMsg());
         }
-
         /**
          * valid 异常处理
          */
